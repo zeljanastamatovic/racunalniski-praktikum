@@ -52,5 +52,8 @@ h2 {
 }
 #vod {
     padding: 2em;
-    background-color:(51, 0 102, 0.1);
+    background-color:rgb(51, 0, 102,0.1);
+}
+.slika p:last-child {
+    font-size: 0.8em;
 }
