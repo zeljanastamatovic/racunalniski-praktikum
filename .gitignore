@@ -2,7 +2,7 @@
 .vscode/
 
 # LaTeX
-.aux
+*.aux
 *.bbl
 *.blg
 *.fdb_latexmk
