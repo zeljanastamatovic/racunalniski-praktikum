@@ -1,0 +1,472 @@
+\documentclass{beamer}
+% Naloga 1.3.1: Za dokument uporabite razred `beamer'.
+% Ne dodajajte nastavitve za velikost pisave, kot je bila v datoteki `5-prosojnice.tex`.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+\usepackage{lmodern}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{booktabs}
+% Naloga 1.3.2: vključite paket `predavanja'.
+\usepackage{pgfpages}
+\usepackage{tikz}
+\usepackage{pgfplots} 
+\usepgfplotslibrary{external}
+
+\usetikzlibrary{math}
+
+\setbeamertemplate{footline}[frame number]{}
+% Naloga 1.3.3: definirajte okolji `definicija' in `izrek'.
+% Namig: z iskanjem po datotekah (Ctrl+Shift+F oz. Cmd+Shift+F) 
+% poiščite niz `{definicija}' ali niz `{izrek}'.
+{\theoremstyle{plain}
+\newtheorem{izrek}{Izrek}[section]
+}
+
+{\theoremstyle{definition}
+\newtheorem{definicija}[izrek]{Definicija}}
+
+
+\begin{document}
+
+\title{Matematični izrazi in uporaba paketa \texttt{beamer}}
+\subtitle{\emph{Matematičnih} nalog ni treba reševati!}
+\institute{Fakulteta za matematiko in fiziko}
+\date{}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+% Naloga 1.3.4: pripravite naslovno stran z vsebino:
+% - naslov: Matematični izrazi in uporaba paketa \texttt{beamer}
+% - podnaslov: \emph{Matematičnih} nalog ni treba reševati!
+% - inštitut: Fakulteta za matematiko in fiziko
+% - datum: naj se ne izpiše; to dosežete z ukazom \date{}.
+% Zgornje podatke nastavite z ukazi kot v dokumentih razreda `article`.
+% Več o tem, kako se naredi naslovno stran, si preberite na naslovu na naslovu:
+% https://www.overleaf.com/learn/latex/Beamer
+% To stran preberite do vključno razdelka "Creating a table of contents".
+% Ukaz `\titlepage` deluje podobno kot ukaz `\maketitle`, ki ste ga že srečali.
+
+\begin{frame}
+\frametitle{Kratek pregled}
+\tableofcontents[pausesections]
+\
+
+\end{frame}
+
+
+% Naloga 1.3.5: pripravite kazalo vsebine.
+% 1. Naslov prosojnice, s kazalom vsebine naj bo "Kratek pregled"
+% 2. S pomožnim parametrom `pausesections' (v oglatih oklepajih) 
+%    določite, da naj se kazalo vsebine odkriva postopoma.
+%    Poglejte, kako deluje ta ukaz.
+% 3. Ker ni videti preveč lepo, pomožni parameter zakomentirajte.
+
+\section{Paket \texttt{beamer}}
+
+
+\frame{Paket \texttt{beamer}}
+
+\begin{frame}{Posebnosti prosojnic}
+	Za prosojnice je značilna uporaba okolja \texttt{frame} s katerim definiramo posamezno prosojnico,
+	\pause
+	postopno odrkivanje prosojnic,
+	\pause
+	ter nekateri drugi ukazi, ki jih najdemo v paketu beamer.
+	\begin{exampleblock}{\color{green}{Primer}}
+		Verjetno ste že opazili, da za naslovno prosojnico niste uporabili ukaza \texttt{maketitle}, ampak ukaz \texttt{titlepage}.
+	\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Opomba}
+		Okolja za poudarjene bloke so \texttt{block, exampleblock} in \texttt{alertblock}
+	\end{block}
+	\begin{alertblock}{\color{orange}{Pozor!}}
+		Začetek poudarjenega bloka (ukaz \texttt{begin}) vedno sprejme dva parametra: okolje in naslov bloka. Drugi parameter (za naslov) je lahko prazen.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{Tudi v predtavitvah lahko pišemo izreke in dokaze}
+	\begin{izrek}
+		Praštevil je neskončno mnogo
+	\end{izrek}
+	\begin{proof}
+		Denimo, da je praštevil končno mnogo.
+		\begin{itemize}
+			\item Naj bo $p$ največje praštevilo.
+			\item Naj bo $q$ produkt števil $1,2,...,p$.
+			\pause
+			\item Število $q+1$ ni deljivo z nobenim praštevilom, torej je $q+1$ praštevilo.
+			\pause
+			\item Torej je protislovje, saj je $q+1>p$.
+		\end{itemize}
+	\end{proof}
+\end{frame}
+\section{Paketa \texttt{amsmath} in \texttt{amsfonts}}
+
+\frame{Paketa \texttt{amsmath}in \texttt{amsfonts}}
+
+\begin{frame}{Matrike}
+	% Naloga 3.2.1:
+	% Oblikujte determinanto matrike. 
+	% Vsebina matrike je že pripravljena v komentarju spodaj.
+	Izračunajte determinanto
+	
+$$	\begin{vmatrix}
+	 -1 & 4 & 4 & -2 \\
+	 1 & 4 & 5 & -1 \\
+	 1 & 4 & -2 & 2 \\
+	 3 & 8 & 4 & 3 \\
+	\end{vmatrix}$$
+
+	
+	V pomoč naj vam bo Overleaf dokumentacija o matrikah:
+	
+	\href{https://www.overleaf.com/learn/latex/Matrices}{\beamergotobutton{Matrices}}
+\end{frame}
+
+\begin{frame}{Okolje \texttt{align} in \texttt{align*}}
+	% Naloga 3.2.2:
+	% Okolje align je namenjeno poravnavi enačb.
+	% Če ne želimo, da se enačba oštevilči, uporabimo okolje align*.
+	% Nadomestite prikazni matematični način z okoljem align*.
+	% Na ustreznih mestih vključite & in \\, da bo enačba videti kot v rešitvi.
+	% Za pravilno postopno odkrivanje morate na enem mestu uporabiti ukaz `only',
+	% ter na dveh mestih ukaz `onslide'.
+	Dokaži \emph{binomsko formulo}: za vsaki realni števili $a$ in $b$ in za vsako naravno število $n$ velja
+\begin{align*}
+	(a+b)^n &= \only{...}<1>\onslide<2->{(a+b) (a+b) \dots (a+b)}\\ 
+	&\onslide<3>{= a^n + n a^{n-1} b + \dots + \binom{n}{k} a^{n-k} b^k + \dots + n a b^{n-1} + b^n }\\
+	&= \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k
+	&
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Še ena uporaba okolja \texttt{align*}}
+	% Naloga 3.2.3:
+	% Oblikujte spodnje enačbe z okoljem align*.
+	% Če naredite po en kurzor na začetku vsake vrstice, 
+	% boste lahko oblikovali vse tri vrstice hkrati.
+	Nariši grafe funkcij:
+	\begin{align*}
+	&y = x^2 - 3|x| + 2   &     y = 3 \sin(\pi+x) - 2 \\
+	&y = \log_2(x-2) + 3  & y = 2 \sqrt{x^2+15} + 6 \\
+	&y = 2^{x-3} + 1      & y = \cos(x-3) + \sin^2(x+1)\\
+	 &
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Okolje \texttt{multline}}
+	% Naloga 3.2.4:
+	% Oblikujte spodnje enačbe z ustreznim okoljem,
+	% da bo enačba oblikovana kot v rešitvah.
+	Poišči vse rešitve enačbe
+	\begin{multline*}
+		(1+x+x^2) \cdot (1+x+x^2+x^3+\ldots+x^9+x^{10}) = \\
+	=(1+x+x^2+x^3+x^4+x^5+x^6)^2.
+	\end{multline*}
+	
+	
+\end{frame}
+
+\begin{frame}{Okolje \texttt{cases}}
+	% Naloga 3.2.5:
+	% Oblikujte spodnji funkcijski predpis z ustreznim okoljem,
+	% da oblikovan kot v rešitvah.
+	Dana je funkcija
+	 $$
+		f(x,y)=\begin{cases}
+			\frac{3x^2y-y^3}{x^2+y^2}, & (x,y)\neq{(0,0)},\\
+            a, & (x,y)=(0,0).
+		 \end{cases}
+	$$
+	% \frac{3x^2y-y^3}{x^2+y^2}
+	
+	\begin{itemize}
+		% ukaz displaystyle preklopi v prikazni način v vrstici. 
+		\item Določi $a$, tako da izračunaš limito $ \lim_{(x,y)\to(0,0)} f(x). $
+		\item Izračunaj parcialna odvoda $f_x(x,y)$ in $f_y(x,y)$.
+	\end{itemize}
+\end{frame}
+
+
+\section[Matematika, 1. del\\\large{Analiza, logika, množice}]{Matematika, 1. del}
+
+\begin{frame}{Logika in množice}
+	\begin{enumerate}
+		\item
+		Poišči preneksno obliko formule 
+		$\exists x:P(x)\land \forall x:Q(x)\Rightarrow \forall x:R(x) $.
+		\item 
+		Definiramo množici $A=[2,5]$ in $B=\{ 0,1,2,3,4...\}$.
+		V ravnino nariši:
+		\begin{enumerate}
+		   \item $A\cap B \times \emptyset $
+		   \item $(A\cup B)^{c}\times \mathbb{R} $
+		\end{enumerate}
+		\item
+		Dokaži:
+		\begin{itemize}
+			\item $(A \Rightarrow B)\sim (\lnot B \Rightarrow \lnot A)$
+			\item $\lnot(A\vee B)\sim \lnot A \wedge \lnot B$
+		\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Analiza}
+	\begin{enumerate}
+		\item
+		Pokaži, da je funkcija $x\mapsto \sqrt{x}$ enakomerno zvezna na $[0,\infty)$.
+		\item 
+		Katero krivuljo določa sledeč parametričen zapis?
+		% Spodaj si pomagajte z dokumentacijo o razmikih v matematičnem načinu.
+		% https://www.overleaf.com/learn/latex/Spacing_in_math_mode
+		$$
+		   x(t) = a \cos t, \quad % tu manjka ukaz za presledek
+		   y(t) = b \sin t, \quad % tu manjka ukaz za presledek
+		   t \in [0, 2 \pi]
+		$$ 
+		\item
+		Pokaži, da ima $f(x)=3x+\sin{2x}$ inverzno funkcijo in izračunaj $(f^{-1})'(3\pi)$.
+		
+		\item
+		Izračunaj integral 
+		% V rešitvah smo spodnji integral zapisali v vrstičnem načinu,
+		% ampak v prikaznem slogu. To naredite tako, da v matematičnem načinu najprej
+		% uporabite ukaz displaystyle.
+		% Pred dx je presledek: pravi ukaz je \,
+		$\displaystyle\int_{}^{} \frac{2+\sqrt{x+1}}{(x+1)^{2}-\sqrt{x+1}} \,dx $
+		% \frac{2+\sqrt{x+1}}{(x+1)^2-\sqrt{x+1}} 
+		\item 
+		Naj bo $g$ zvezna funkcija. Ali posplošeni integral 
+		$\int_{0}^{1}\frac{g(x)}{x}\,dx$
+		konvergira ali divergira? Utemelji.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Kompleksna števila}
+	\begin{enumerate}
+		\item
+		Naj bo $z$ kompleksno število, $z \ne 1$ in $|z|=1$.
+		Dokaži, da je število \( i \, \frac{z+1}{z-1} \) realno.
+		\item
+		Poenostavi izraz:
+		$$\dfrac{\dfrac{3+i}{2-2i}+\dfrac{7i}{1-i}}{1+\dfrac{1-i}{4}-\dfrac{5}{2-3i}}$$.
+	\end{enumerate}
+\end{frame}
+
+
+\section{Stolpci in slike}
+
+%\begin{frame}{Konstrukcija pravokotnice na premico $p$ skozi točko $T$}
+%	\begin{columns}
+%	\column{0.55\textheight}
+%	\begin{itemize}
+%	\onslide<1->		\item Dani sta premica $p$ in točka $T$.
+%	\onslide<2->	\item Nariši lok $k$ s središčem v $T$.
+%	\onslide<3->	\item Premico $p$ seče v točkah $A$ in $B$.
+%	\onslide<4->	\item Nariši lok $m$ s središčem v $A$.
+%	\onslide<5->	\item Nariši lok $n$ s središčem v $B$ in z enakim polmerom.
+%	\onslide<6->	\item Loka se sečeta v točki $C$.
+%	\onslide<7->	\item Premica skozi točki $T$ in $C$ je pravokotna na $p$.
+%	\end{itemize}
+%			\column{0.45\textheight}
+%	\includegraphics[width=50mm]{slike/fig-1.png}}%
+%	 \includegraphics[width=50mm]{slike/fig-2.png}%
+%	 \includegraphics[width=50mm]{slike/fig-3.png}%
+%	 \includegraphics[width=50mm]{slike/fig-4.png}%
+%	 \includegraphics[width=50mm]{slike/fig-5.png}%
+%	 \includegraphics[width=50mm]{slike/fig-6.png}%
+%	 \includegraphics[width=50mm]{slike/fig-7.png}%
+%\end{columns}
+%\end{frame}
+
+\begin{frame}{Konstrukcija pravokotnice na premico $p$ skozi točko $T$}
+	\begin{columns}
+		\column{0.55\textwidth}
+	\begin{itemize}
+	\onslide<1->	\item Dani sta premica $p$ in točka $T$.
+	\onslide<2->	\item Nariši lok $k$ s središčem v $T$.
+	\onslide<3->	\item Premico $p$ seče v točkah $A$ in $B$.
+	\onslide<4->	\item Nariši lok $m$ s središčem v $A$.
+	\onslide<5->	\item Nariši lok $n$ s središčem v $B$ in z enakim polmerom.
+	\onslide<6->	\item Loka se sečeta v točki $C$.
+	\onslide<7->	\item Premica skozi točki $T$ in $C$ je pravokotna na $p$.
+	\end{itemize}
+	\column{0.45\textheight}
+ 	\begin{tikzpicture}<
+	\onslide<1->
+	\tikzmath{
+		% Razdalja od točke T do premice p je tako 2*sin(45°).
+		\t = 2*sin(45);
+		% Razdalja začetka loka m do premice p
+		% oz. razdalja točke T' levo in zgoraj od točke T do premice
+		\tt = 2*sin(60);
+		% Razdalja točke T' od navpične premice skozi T
+		\d = \t-2*cos(60);
+	}
+	% Definicija točke T
+	\coordinate [label={[blue, above left]:$T$}] (T) at (0,{\t});
+	% Risanje točke T
+	\fill[blue] (T) circle (2pt);
+	% Premica p
+	\draw[blue, very thick] (-2,0) -- (2,0) node[right] {$p$};
+	\pause
+	% Definicija pomožne točke A' in risanje krožnega loka k, ki se začne v A'
+	\coordinate (A') at ({-\tt},{\d});
+	\draw[gray, thin] (A') arc[start angle=210, end angle=330, radius=2] node[right] {\scriptsize $k$};
+	\pause
+	% Točka A
+	\coordinate [label=below left:{\scriptsize $A$}] (A) at ({-\t},0);
+	\draw (A) circle (1.5pt);
+	% Točka B
+	\coordinate [label=below right:{\scriptsize $B$}] (B) at ({\t},0);
+	\draw (B) circle (1.5pt);
+	\coordinate (T') at ({-\t+1},{-\tt});
+	\draw[gray, thin] (T') arc[start angle=300, end angle=420, radius=2] node[left] {\scriptsize $m$};
+	\pause
+	\coordinate (T'') at ({\t-1},{-\tt});
+	\draw[gray, thin] (T'') arc[start angle=240, end angle=120, radius=2] node[left] {\scriptsize $n$};
+	\pause
+	
+	\coordinate [label=below left:{\scriptsize $C$}] (C) at (0,{-\t});
+	\draw (C) circle (1.5pt);
+	
+	\draw[red, very thick] (0,2) -- (0,-2) ;%
+\end{tikzpicture}
+	\end{columns}
+\end{frame}
+
+
+
+ 
+ \begin{frame}{Graf funkcije s TikZ}
+	 	\centering
+	 	\begin{tikzpicture}
+		 	\begin{axis}[
+		 		axis lines = middle,
+		 	 			domain = 0:10,
+		 	 			width = 9cm,
+		 	 			height = 8cm,
+		 	 			xtick = {0, 1, 2, 3, 4, 5, 6, 7, 8},
+		 	 			ytick = {0, 1, 2, 3, 4, 5, 6},
+		 	 			ymin = -1,
+		 	 			ymax = 7,
+		 	 			grid = both,
+		 	 			xlabel={$x$},
+		 	 			ylabel={$f(x)$}
+		 		]
+		 		%Below the red parabola is defined
+		 		\addplot [
+		 		color=red,
+		 		]
+		 		{2^(x - 3)/8 + 1};
+		 		\addlegendentry{$\frac{2^(x-3}{2^3} + 1$}
+		 		\end{axis}
+			\end{tikzpicture}
+	 \end{frame}
+
+
+\section{Paket \texttt{beamer} in tabele}
+
+\begin{frame}{Odkrivanje tabele po vrsticah}
+	Včasih pride prav, da tabelo odkrivamo postopoma po vrsticah.
+	\begin{center}
+		\begin{tabular}{c|cccc}
+			Oznaka & A & B & C & D \\ \hline
+		\pause	X & 1 & 2 & 3 & 4 \\
+		\pause	Y & 3 & 4 & 5 & 6 \\
+		\pause	Z & 5 & 6 & 7 & 8
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+
+
+	
+%\begin{frame}{Odkrivanje tabele po stolpcih}
+%	Tabelo lahko odkrivamo tudi po stolpcih, čeprav ni najlažje.
+%	
+%	\begin{center}
+%		\begin{tabular}{c|>{\onslide<2->}cccc<{\onslide}}
+%			Oznaka & A & B & C & D \\ \hline
+%			X & 1 & 2 & 3 & 4 \\
+%			Y & 3 & 4 & 5 & 6 \\
+%			Z & 5 & 6 & 7 & 8
+%		\end{tabular}
+%	\end{center}
+%%\end{frame}
+
+
+\section[Matematika, 2. del\\\large{Zaporedja, algebra, grupe}]{Matematika, 2. del}
+
+\begin{frame}{Zaporedja, vrste in limite}
+\begin{enumerate}
+	\item 
+	Naj b o$\sum^{\infty}_{n=1}a_n$ absolutno konvergentna vrsta in $a_n \ne -1$.
+	Dokaži, da je tudi vrsta $\sum_{n=1}^\infty \frac{a_n}{1+a_n}$
+	absolutno konvergentna.
+	
+	\item
+	Izračunaj limito
+ $$ \lim_{x\to\infty}(\sin{\sqrt{x+1}}-\sin{\sqrt{x}}) $$
+ 
+
+
+	\item
+	Za dani zaporedji preveri, ali sta konvergentni.
+	% Pomagajte si s spodnjima delno pripravljenima matematičnima izrazoma:
+	$$ a_n = \underbrace{\sqrt{2+\sqrt{2+\dots+\sqrt{2}}}}_{\text{$n$ korenov}} \qquad
+	 b_n = \underbrace{\sin(\sin(\dots(\sin 1)\dots))}_{\text{$n$ sinusov}}$$
+	
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Algebra}
+	\begin{enumerate}
+		\item
+		Vektorja $\vec{c}=\vec{a}+2\vec{b}$ in $\vec{d}=\vec{a}-\vec{b}$
+		sta pravokotna in imata dolžino 1. Določi kot med vektorjema $\vec{a}$ in $\vec{b}$.
+		\item 
+		Izračunaj
+		$	\begin{pmatrix}
+			1 & 2 & 3 & 4 & 5 & 6\\
+			4 & 5 & 2 & 6 & 3 & 1
+		\end{pmatrix}^{-2000}	$.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Velika determinanta}
+	Izračunaj naslednjo determinanto $2n \times 2n$, ki ima na neoznačenih mestih ničle.
+	
+	
+\end{frame}
+
+\begin{frame}{Grupe}
+	Naj bo\\
+	$G=\{z\in\mathbb{C};z=2^{k}(\cos{(m\pi\sqrt{2})}+i\sin{(m\pi\sqrt{2})}),k,m\in\mathbb{Z}\}$\\
+	$H=\{(x,y)\in\mathbb{R}^{2};x,y\in\mathbb{Z}\}$
+	\begin{enumerate}
+		\item
+		Pokaži, da je $G$ podgrupa v grupi $(\mathbb{C}\backslash\{0\},\cdot)$
+		neničelnih kompleksnih števil za običajno množenje.
+		\item
+		Pokaži, da je $H$ podgrupa v aditivni grupi $(\mathbb{R}^{2},+)$
+		ravninskih vektorjev za običajno seštevanje po komponentah.
+		\item
+		Pokaži, da je preslikava $f:H\to G$, podana s pravilom
+		$$(x,y)\longmapsto 2^{x}(\cos{(y\pi\sqrt{2})}+i\sin{(y\pi\sqrt{2})})$$
+		izomorfizem grup $G$ in $H$.
+	\end{enumerate}
+\end{frame}
+
+
+\end{document}
